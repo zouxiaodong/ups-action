@@ -21,12 +21,10 @@ func (r *ServerResult) IsSuccess() bool {
 }
 
 func main() {
-	if len(os.Args) < 2 {
-		fmt.Fprintf(os.Stderr, "Usage: %s <config.json>\n", os.Args[0])
-		os.Exit(3)
+	configPath := "config.json"
+	if len(os.Args) >= 2 {
+		configPath = os.Args[1]
 	}
-
-	configPath := os.Args[1]
 
 	cfg, err := ParseConfigFile(configPath)
 	if err != nil {
